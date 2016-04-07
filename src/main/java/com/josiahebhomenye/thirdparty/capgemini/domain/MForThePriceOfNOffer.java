@@ -35,9 +35,7 @@ public class MForThePriceOfNOffer implements Offer {
 				IntStream.range(0, leftOvers).forEach((i) -> newItems.add(oldItem) );
 
 				IntStream.range(0, applications).forEach((i) -> {
-					IntStream.range(i, threshold + i).forEach((j) -> {
-						newItems.add(newItem);
-					});
+					IntStream.range(0, threshold).forEach((j) -> newItems.add(newItem) );
 					newItems.add(newItem);
 				});
 			}else{
