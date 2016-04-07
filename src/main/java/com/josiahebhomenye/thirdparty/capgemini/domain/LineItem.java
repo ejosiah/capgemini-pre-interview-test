@@ -16,4 +16,10 @@ public class LineItem {
 	private final Product product;
 
 	private final Money cost;
+
+	public LineItem newCost(Money cost){
+		return new LineItem(product, cost);
+	}
+
+
 }

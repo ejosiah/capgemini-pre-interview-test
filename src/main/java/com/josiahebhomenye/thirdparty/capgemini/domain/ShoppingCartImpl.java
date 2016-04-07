@@ -1,5 +1,7 @@
 package com.josiahebhomenye.thirdparty.capgemini.domain;
 
+import lombok.RequiredArgsConstructor;
+
 import static java.util.stream.Collectors.*;
 
 import java.util.List;
@@ -7,7 +9,10 @@ import java.util.List;
 /**
  * Created by Josiah on 4/7/2016.
  */
+@RequiredArgsConstructor
 public class ShoppingCartImpl implements ShoppingCart {
+
+	private final Offers offers;
 
 	@Override
 	public String totalCostOf(List<LineItem> items) {
@@ -17,7 +22,8 @@ public class ShoppingCartImpl implements ShoppingCart {
 	}
 
 	protected Money evaluateTotal(List<LineItem> items){
-		List<Money> costs = items.stream().map(LineItem::getCost).collect(toList());
+		List<LineItem> itemsAfterOffersApplied = offers.apply(items);
+		List<Money> costs = itemsAfterOffersApplied.stream().map(LineItem::getCost).collect(toList());
 		Money tally = costs.get(0).zero();
 		return tally.total(costs);
 	}

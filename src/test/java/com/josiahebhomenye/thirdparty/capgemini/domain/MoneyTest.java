@@ -30,4 +30,20 @@ public class MoneyTest {
 	public void testAddFailsOnCurrencyMissMatch(){
 		new Money("0.45", USD).add(new Money("0.55", GBP));
 	}
+
+	@Test
+	public void testMultiply(){
+		Money expected = new Money("4.00", GBP);
+		Money actual = new Money("1.00", GBP).multiplyBy(4);
+
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testDivideBy(){
+		Money expected = new Money("1.00", GBP);
+		Money actual = new Money("4.00", GBP).divideBy(4);
+
+		assertEquals(expected, actual);
+	}
 }
