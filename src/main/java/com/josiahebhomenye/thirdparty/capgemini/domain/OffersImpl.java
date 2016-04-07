@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Josiah on 4/7/2016.
  */
-public class OffersImpl {
+public class OffersImpl implements Offers {
 	private final List<Offer> offerChain = new LinkedList<>();
 
 	public void add(Offer offer){
